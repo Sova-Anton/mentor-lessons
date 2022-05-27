@@ -142,16 +142,38 @@ console.log(`${modifyHours}:${modifyMinutes}`);*/
 //  В переменной min лежит число от 0 до 59.
 // Определите в какую четверть часа попадает
 // это число(в первую, вторую, третью или четвертую).
-const min = 55;
+// const min = 55;
 
-if (min <= 15) {
-    console.log('First part hour');
-} else if (min > 15 && min <= 30) {
-    console.log('Second part hour');
+// if (min <= 15) {
+//     console.log('First part hour');
+// } else if (min > 15 && min <= 30) {
+//     console.log('Second part hour');
 
-} else if (min > 30 && min <= 45) {
-    console.log('Thrird part hour');
-} else {
-    console.log('Fourth part hour');
+// } else if (min > 30 && min <= 45) {
+//     console.log('Thrird part hour');
+// } else {
+//     console.log('Fourth part hour');
+// }
+
+//Елси число делиться на 3 возвращать
+//fizz если делиться на 5 возвращать buzz
+//елси делиться на 3 и на 5 возвращить fizzbuzz
+
+
+
+function fizzBuzz(num) {
+    console.log(num);
+    for (let i = 0; i <= num; i += 1) {
+        if (i % 3 === 0 && i % 5 === 0) {
+            console.log('fizzBuzz');
+        } else if (i % 3 === 0){
+           console.log('fizz');
+        } else if (i % 5 === 0) {
+            console.log('Buzz');
+        } else {
+            console.log(i)
+        }
+    }
 }
 
+fizzBuzz(64);
