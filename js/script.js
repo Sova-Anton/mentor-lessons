@@ -61,12 +61,12 @@ console.log(`${modifyHours}:${modifyMinutes}`);*/
 //                 console.log("Неверный пароль!");
 //         }
 //         break;
-//     case null: 
+//     case null:
 //         console.log("Отменено");
 //         break;
     
 //     default:
-//         console.log("Я вас не знаю");   
+//         console.log("Я вас не знаю");
         
 // }
 
@@ -111,12 +111,29 @@ console.log(`${modifyHours}:${modifyMinutes}`);*/
 //Делать проверку,что пользователь ввел именно число,
 //а не произвольный набор символов, не нужно.
 
-let input = prompt('Уведіть число');
-let total = 0;
+// let input = prompt('Уведіть число');
+// let total = 0;
 
 
-while (input) { 
-    console.log('Сума', total += Number(input));
-    input = prompt('Уведіть число');
+// while (input) {
+//     console.log('Сума', total += Number(input));
+//     input = prompt('Уведіть число');
+// }
+// console.log(total);
+
+
+
+//7. Напишите цикл, который предлагает ввести
+//число больше 100 через prompt.
+//Если посетитель ввёл другое число - попросить
+//ввести ещё раз и так далее.
+//Цикл должет спрашивать число, пока посетитель не
+//введёт число больше 100, либо не нажмет кнопку
+//Отмена в prompt
+
+let input = prompt("enter the number over 100");
+
+while (Number(input) < 100 && input !== null) {
+    input = prompt("enter the number over 100");
 }
-console.log(total);
+console.log(input);
