@@ -131,9 +131,27 @@ console.log(`${modifyHours}:${modifyMinutes}`);*/
 //введёт число больше 100, либо не нажмет кнопку
 //Отмена в prompt
 
-let input = prompt("enter the number over 100");
+// let input = prompt("enter the number over 100");
 
-while (Number(input) < 100 && input !== null) {
-    input = prompt("enter the number over 100");
+// while (Number(input) < 100 && input !== null) {
+//     input = prompt("enter the number over 100");
+// }
+// console.log(input);
+
+// TASK 7
+//  В переменной min лежит число от 0 до 59.
+// Определите в какую четверть часа попадает
+// это число(в первую, вторую, третью или четвертую).
+const min = 55;
+
+if (min <= 15) {
+    console.log('First part hour');
+} else if (min > 15 && min <= 30) {
+    console.log('Second part hour');
+
+} else if (min > 30 && min <= 45) {
+    console.log('Thrird part hour');
+} else {
+    console.log('Fourth part hour');
 }
-console.log(input);
+
