@@ -194,10 +194,29 @@ const vehicles = [
 ];
 //1.Реализовать фильтер по свойству amount и получить
 //только название модели
-const getAvailableCarNames = (cars, amountThreshold) => {
+// const getAvailableCarNames = (cars, amountThreshold) => {
     
-    return cars.filter(({amount}) => amount > amountThreshold).map(({model}) => model)
+//     return cars.filter(({amount}) => amount > amountThreshold).map(({model}) => model)
 
-}
+// }
 
-console.table(getAvailableCarNames(vehicles, 12));
+// const getAvailableCarNames = (cars, amountThreshold) => {
+    
+//   return cars.reduce((acc, car) => {
+//     if (car.amount > amountThreshold) {
+//       return [...acc, car.model]
+//       // acc.push(car.model)
+//     }
+//     return acc
+//   }, [])
+
+// }
+// console.table(getAvailableCarNames(vehicles, 12));
+
+//2.Получить машины на распродаже и сортировать по убыванию цены
+
+const getSortedCarsOnSale = (cars) => { return cars.filter((car) => car.onSale).sort((a, b) => a.price - b.price) };
+
+console.table(getSortedCarsOnSale(vehicles));
+
+
