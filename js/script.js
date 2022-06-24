@@ -284,27 +284,48 @@ console.log(`${modifyHours}:${modifyMinutes}`);*/
 // Найти первый уникланый символ в строке
 //в строке будут только буквы латинского алфавита и они будут в lowerCase
 //https://learn.javascript.ru/map-set
-let input1 = 'leetcode'; //0
-let input2 = 'loveleetcode'; //2
-let input3 = 'aabb'; //-1
+// let input1 = 'leetcode'; //0
+// let input2 = 'loveleetcode'; //2
+// let input3 = 'aabb'; //-1
 
-const uniq = (string) => {
-  const strToArray = string.split("");
-  // console.log(strToArray);
-  const obj = strToArray.reduce((acc, letter) => {
-    // if (acc[letter]) { return { ...acc, [letter]: acc[letter] + 1 } }
-    // return { ...acc, [letter]: 1 }
-    return {...acc, [letter]: acc[letter]?acc[letter]+1:1}
-  }, {});
-  // console.log(obj);
+// const uniq = (string) => {
+//   const strToArray = string.split("");
+//   // console.log(strToArray);
+//   const obj = strToArray.reduce((acc, letter) => {
+//     // if (acc[letter]) { return { ...acc, [letter]: acc[letter] + 1 } }
+//     // return { ...acc, [letter]: 1 }
+//     return {...acc, [letter]: acc[letter]?acc[letter]+1:1}
+//   }, {});
+//   // console.log(obj);
 
-  for (const item in obj) {
-    // console.log(obj[item]);
-    if (obj[item] === 1) {
-      return strToArray.indexOf(item)
+//   for (const item in obj) {
+//     // console.log(obj[item]);
+//     if (obj[item] === 1) {
+//       return strToArray.indexOf(item)
+//     }
+//   }
+//   return -1;
+
+// }
+// console.log(uniq(input3));
+
+
+// map(({model}) => model)
+
+const planets = ['Земля', 'Марс', 'Венера', 'Юпітер'];
+// console.log(planets.map((planet) => planet.length));
+
+const ownMap = (arr, callback) => {
+    // console.log(arr);
+    // console.log(callback());
+
+    const newArray = [];
+
+    for (let i = 0; i < arr.length; i += 1) {
+        newArray.push(callback(arr[i], i, arr))
     }
-  }
-  return -1;
-
+    return newArray;
 }
-console.log(uniq(input3));
+
+console.log(ownMap(planets, planet => planet.length))
+
