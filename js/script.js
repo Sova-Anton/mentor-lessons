@@ -261,23 +261,50 @@ console.log(`${modifyHours}:${modifyMinutes}`);*/
 
 
 
-const vehicles = [
-  { make: 'Honda', model: 'CR-V', type: 'suv', amount: 14, price: 24045, onSale: true },
-  { make: 'Honda', model: 'Accord', type: 'sedan', amount: 2, price: 22455, onSale: true },
-  { make: 'Mazda', model: 'Mazda 6', type: 'sedan', amount: 8, price: 24195, onSale: false },
-  { make: 'Mazda', model: 'CX-9', type: 'suv', amount: 7, price: 31520, onSale: true },
-  { make: 'Toyota', model: '4Runner', type: 'suv', amount: 19, price: 34210, onSale: false },
-  { make: 'Toyota', model: 'Sequoia', type: 'suv', amount: 16, price: 45560, onSale: false },
-  { make: 'Toyota', model: 'Tacoma', type: 'truck', amount: 4, price: 24320, onSale: true },
-  { make: 'Ford', model: 'F-150', type: 'truck', amount: 11, price: 27110, onSale: true },
-  { make: 'Ford', model: 'Fusion', type: 'sedan', amount: 13, price: 22120, onSale: true },
-  { make: 'Ford', model: 'Explorer', type: 'suv', amount: 6, price: 31660, onSale: false },
-];
+// const vehicles = [
+//   { make: 'Honda', model: 'CR-V', type: 'suv', amount: 14, price: 24045, onSale: true },
+//   { make: 'Honda', model: 'Accord', type: 'sedan', amount: 2, price: 22455, onSale: true },
+//   { make: 'Mazda', model: 'Mazda 6', type: 'sedan', amount: 8, price: 24195, onSale: false },
+//   { make: 'Mazda', model: 'CX-9', type: 'suv', amount: 7, price: 31520, onSale: true },
+//   { make: 'Toyota', model: '4Runner', type: 'suv', amount: 19, price: 34210, onSale: false },
+//   { make: 'Toyota', model: 'Sequoia', type: 'suv', amount: 16, price: 45560, onSale: false },
+//   { make: 'Toyota', model: 'Tacoma', type: 'truck', amount: 4, price: 24320, onSale: true },
+//   { make: 'Ford', model: 'F-150', type: 'truck', amount: 11, price: 27110, onSale: true },
+//   { make: 'Ford', model: 'Fusion', type: 'sedan', amount: 13, price: 22120, onSale: true },
+//   { make: 'Ford', model: 'Explorer', type: 'suv', amount: 6, price: 31660, onSale: false },
+// ];
 
-const vehiclesFilter = (cars) => {
-    return cars.filter( ({amount}) => amount > 5).map(({make}) => make).filter((car, idx, arr) => arr.indexOf(car) === idx)
+// const vehiclesFilter = (cars) => {
+//     return cars.filter( ({amount}) => amount > 5).map(({make}) => make).filter((car, idx, arr) => arr.indexOf(car) === idx)
+// }
+
+// console.log(vehiclesFilter(vehicles))
+
+
+// Найти первый уникланый символ в строке
+//в строке будут только буквы латинского алфавита и они будут в lowerCase
+//https://learn.javascript.ru/map-set
+let input1 = 'leetcode'; //0
+let input2 = 'loveleetcode'; //2
+let input3 = 'aabb'; //-1
+
+const uniq = (string) => {
+  const strToArray = string.split("");
+  // console.log(strToArray);
+  const obj = strToArray.reduce((acc, letter) => {
+    // if (acc[letter]) { return { ...acc, [letter]: acc[letter] + 1 } }
+    // return { ...acc, [letter]: 1 }
+    return {...acc, [letter]: acc[letter]?acc[letter]+1:1}
+  }, {});
+  // console.log(obj);
+
+  for (const item in obj) {
+    // console.log(obj[item]);
+    if (obj[item] === 1) {
+      return strToArray.indexOf(item)
+    }
+  }
+  return -1;
+
 }
-
-
-
-console.log(vehiclesFilter(vehicles))
+console.log(uniq(input3));
