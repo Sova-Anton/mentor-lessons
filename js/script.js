@@ -215,8 +215,30 @@ const vehicles = [
 
 //2.Получить машины на распродаже и сортировать по убыванию цены
 
-const getSortedCarsOnSale = (cars) => { return cars.filter((car) => car.onSale).sort((a, b) => a.price - b.price) };
+// const getSortedCarsOnSale = (cars) => { return cars.filter((car) => car.onSale).sort((a, b) => a.price - b.price) };
 
-console.table(getSortedCarsOnSale(vehicles));
+// console.table(getSortedCarsOnSale(vehicles));
 
+//3. Необходимо написать функцию (isEqualSymbols), принимающую
+//в аргументах две строки и возвращающую true, если эти строки
+//состоят из идентичных букв и false в противном случае.
+//isEqualSymbols('кот', 'ток'); // выведет true
+//isEqualSymbols('кот', 'тик'); // выведет false
 
+const isEqualSymbols = (string1, string2) => {
+    const string1ToArray = [...string1].sort((a, b) => a.localeCompare(b));
+    const string2ToArray = string2.split('').sort((a, b) => a.localeCompare(b));
+
+    for (let i = 0; i < string1ToArray.length; i += 1) {
+        if (string1ToArray[i] !== string2ToArray[i]) {
+            return false;
+        } 
+    }
+
+    return true;
+
+    console.log(string2ToArray);
+    console.log(string1ToArray);
+}
+
+console.log(isEqualSymbols('кот', 'тик'))
