@@ -225,20 +225,25 @@ const vehicles = [
 //isEqualSymbols('кот', 'ток'); // выведет true
 //isEqualSymbols('кот', 'тик'); // выведет false
 
-const isEqualSymbols = (string1, string2) => {
-    const string1ToArray = [...string1].sort((a, b) => a.localeCompare(b));
-    const string2ToArray = string2.split('').sort((a, b) => a.localeCompare(b));
+//
 
-    for (let i = 0; i < string1ToArray.length; i += 1) {
-        if (string1ToArray[i] !== string2ToArray[i]) {
-            return false;
-        } 
-    }
+//Назначить скидку 20% на фрукты в массиве,
+//присвоить id для каждого продукта
 
-    return true;
+// const fruits = [
+//   { name: 'apple', price: 200 },
+//   { name: 'orange', price: 300 },
+//   { name: 'grapes', price: 750 },
+// ];
 
-    console.log(string2ToArray);
-    console.log(string1ToArray);
-}
+// const discountFruits = (fruits) => { return fruits.map((fruit) => { return { ...fruit, price: fruit.price * 0.8, id: Date.now() } }) };
 
-console.log(isEqualSymbols('кот', 'тик'))
+// console.log(discountFruits(fruits));
+
+//Дан массив с числами. Оставьте в нем только положительные числа.
+//Затем извлеките квадратный корень и этих чисел.
+const array = [121, -2, 225, 0, 4, -5, 36, -11];
+
+const modifyArray = (numbers) => { return numbers.filter(number => number > 0).map(number => Math.sqrt(number)) };
+
+console.log(modifyArray(array));
