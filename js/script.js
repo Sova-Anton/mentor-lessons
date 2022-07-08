@@ -64,10 +64,10 @@ console.log(`${modifyHours}:${modifyMinutes}`);*/
 //     case null:
 //         console.log("Отменено");
 //         break;
-    
+
 //     default:
 //         console.log("Я вас не знаю");
-        
+
 // }
 
 // if (inputLogin === "Admin") {
@@ -77,15 +77,12 @@ console.log(`${modifyHours}:${modifyMinutes}`);*/
 //     } else {
 //         console.log("Неверный пароль!");
 //     }
-    
-    
+
 // } else if (inputLogin === null) {
 //   console.log("Отменено");
 // } else {
 //   console.log("Я вас не знаю");
 // }
-
-
 
 //Если посетитель вводит "Админ",
 //то prompt запрашивает пароль.
@@ -114,14 +111,11 @@ console.log(`${modifyHours}:${modifyMinutes}`);*/
 // let input = prompt('Уведіть число');
 // let total = 0;
 
-
 // while (input) {
 //     console.log('Сума', total += Number(input));
 //     input = prompt('Уведіть число');
 // }
 // console.log(total);
-
-
 
 //7. Напишите цикл, который предлагает ввести
 //число больше 100 через prompt.
@@ -159,8 +153,6 @@ console.log(`${modifyHours}:${modifyMinutes}`);*/
 //fizz если делиться на 5 возвращать buzz
 //елси делиться на 3 и на 5 возвращить fizzbuzz
 
-
-
 // function fizzBuzz(num) {
 //     console.log(num);
 //     for (let i = 0; i <= num; i += 1) {
@@ -178,8 +170,6 @@ console.log(`${modifyHours}:${modifyMinutes}`);*/
 
 // fizzBuzz(64);
 
-
-
 // const vehicles = [
 //   { make: 'Honda', model: 'CR-V', type: 'suv', amount: 14, price: 24045, onSale: true },
 //   { make: 'Honda', model: 'Accord', type: 'sedan', amount: 2, price: 22455, onSale: true },
@@ -195,13 +185,13 @@ console.log(`${modifyHours}:${modifyMinutes}`);*/
 //1.Реализовать фильтер по свойству amount и получить
 //только название модели
 // const getAvailableCarNames = (cars, amountThreshold) => {
-    
+
 //     return cars.filter(({amount}) => amount > amountThreshold).map(({model}) => model)
 
 // }
 
 // const getAvailableCarNames = (cars, amountThreshold) => {
-    
+
 //   return cars.reduce((acc, car) => {
 //     if (car.amount > amountThreshold) {
 //       return [...acc, car.model]
@@ -248,8 +238,6 @@ console.log(`${modifyHours}:${modifyMinutes}`);*/
 
 // console.log(modifyArray(array));
 
-
-
 // //Создание массива значений Фаренгейта из массива значений Цельсия
 // let celsius = [-15, -5, 0, 10, 16, 20, 24, 32];
 // // t * 1.8 + 32
@@ -257,9 +245,6 @@ console.log(`${modifyHours}:${modifyMinutes}`);*/
 // const celsiusByFar = (degree) => degree.map(t => t * 1.8 + 32);
 
 // console.log(celsiusByFar(celsius))
-
-
-
 
 // const vehicles = [
 //   { make: 'Honda', model: 'CR-V', type: 'suv', amount: 14, price: 24045, onSale: true },
@@ -279,7 +264,6 @@ console.log(`${modifyHours}:${modifyMinutes}`);*/
 // }
 
 // console.log(vehiclesFilter(vehicles))
-
 
 // Найти первый уникланый символ в строке
 //в строке будут только буквы латинского алфавита и они будут в lowerCase
@@ -309,23 +293,80 @@ console.log(`${modifyHours}:${modifyMinutes}`);*/
 // }
 // console.log(uniq(input3));
 
-
 // map(({model}) => model)
 
-const planets = ['Земля', 'Марс', 'Венера', 'Юпітер'];
-// console.log(planets.map((planet) => planet.length));
+// const planets = ['Земля', 'Марс', 'Венера', 'Юпітер'];
+// // console.log(planets.map((planet) => planet.length));
 
-const ownMap = (arr, callback) => {
-    // console.log(arr);
-    // console.log(callback());
+// const ownMap = (arr, callback) => {
+//     // console.log(arr);
+//     // console.log(callback());
 
-    const newArray = [];
+//     const newArray = [];
 
-    for (let i = 0; i < arr.length; i += 1) {
-        newArray.push(callback(arr[i], i, arr))
-    }
-    return newArray;
+//     for (let i = 0; i < arr.length; i += 1) {
+//         newArray.push(callback(arr[i], i, arr))
+//     }
+//     return newArray;
+// }
+
+// console.log(ownMap(planets, planet => planet.length))
+
+class CounterPlugin {
+  #value;
+  #step;
+  #refs;
+  constructor({ rootSelector, initialValue = 0, stepValue = 1 } = {}) {
+    this.#value = initialValue;
+    this.#step = stepValue;
+    this.#refs = this.#getRefs(rootSelector);
+    this.#bindEvents();
+  }
+  #getRefs(selector) {
+    const refs = {};
+    refs.container = document.querySelector(selector);
+    refs.increment = refs.container.querySelector('[data-action="increment"]');
+    refs.decrement = refs.container.querySelector('[data-action="decrement"]');
+    refs.value = refs.container.querySelector("#value");
+
+    return refs;
+  }
+
+  #increment() {
+    this.#value += this.#step;
+    this.#updateValue();
+  }
+  #decrement() {
+    this.#value -= this.#step;
+    this.#updateValue();
+  }
+
+  #updateValue() {
+    this.#refs.value.textContent = this.#value;
+  }
+
+  #bindEvents() {
+    this.#refs.increment.addEventListener("click", () => {  this.#increment()})
+    // this.#refs.increment.addEventListener("click", this.increment);
+    this.#refs.decrement.addEventListener("click", () => {
+      this.#decrement();
+    });
+  }
 }
 
-console.log(ownMap(planets, planet => planet.length))
+const counter = new CounterPlugin({
+  rootSelector: "#counter",
+  initialValue: 0,
+  stepValue: 10,
+});
+const counter2 = new CounterPlugin({
+  rootSelector: "#counter2",
+  initialValue: 0,
+  stepValue: 1000,
+});
+const counter3 = new CounterPlugin({
+  rootSelector: "#counter3",
+  initialValue: 0,
+  stepValue: 100,
+});
 
