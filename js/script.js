@@ -312,61 +312,97 @@ console.log(`${modifyHours}:${modifyMinutes}`);*/
 
 // console.log(ownMap(planets, planet => planet.length))
 
-class CounterPlugin {
-  #value;
-  #step;
-  #refs;
-  constructor({ rootSelector, initialValue = 0, stepValue = 1 } = {}) {
-    this.#value = initialValue;
-    this.#step = stepValue;
-    this.#refs = this.#getRefs(rootSelector);
-    this.#bindEvents();
-  }
-  #getRefs(selector) {
-    const refs = {};
-    refs.container = document.querySelector(selector);
-    refs.increment = refs.container.querySelector('[data-action="increment"]');
-    refs.decrement = refs.container.querySelector('[data-action="decrement"]');
-    refs.value = refs.container.querySelector("#value");
+// * Tripoli80
 
-    return refs;
-  }
+// class CounterPlugin {
+//   #value;
+//   #step;
+//   #refs;
+//   constructor({ rootSelector, initialValue = 0, stepValue = 1 } = {}) {
+//     this.#value = initialValue;
+//     this.#step = stepValue;
+//     this.#refs = this.#getRefs(rootSelector);
+//     this.#bindEvents();
+//   }
+//   #getRefs(selector) {
+//     const refs = {};
+//     refs.container = document.querySelector(selector);
+//     refs.increment = refs.container.querySelector('[data-action="increment"]');
+//     refs.decrement = refs.container.querySelector('[data-action="decrement"]');
+//     refs.value = refs.container.querySelector("#value");
 
-  #increment() {
-    this.#value += this.#step;
-    this.#updateValue();
-  }
-  #decrement() {
-    this.#value -= this.#step;
-    this.#updateValue();
-  }
+//     return refs;
+//   }
 
-  #updateValue() {
-    this.#refs.value.textContent = this.#value;
-  }
+//   #increment() {
+//     this.#value += this.#step;
+//     this.#updateValue();
+//   }
+//   #decrement() {
+//     this.#value -= this.#step;
+//     this.#updateValue();
+//   }
 
-  #bindEvents() {
-    this.#refs.increment.addEventListener("click", () => {  this.#increment()})
-    // this.#refs.increment.addEventListener("click", this.increment);
-    this.#refs.decrement.addEventListener("click", () => {
-      this.#decrement();
-    });
-  }
+//   #updateValue() {
+//     this.#refs.value.textContent = this.#value;
+//   }
+
+//   #bindEvents() {
+//     this.#refs.increment.addEventListener("click", () => {  this.#increment()})
+//     // this.#refs.increment.addEventListener("click", this.increment);
+//     this.#refs.decrement.addEventListener("click", () => {
+//       this.#decrement();
+//     });
+//   }
+// }
+
+// const counter = new CounterPlugin({
+//   rootSelector: "#counter",
+//   initialValue: 0,
+//   stepValue: 10,
+// });
+// const counter2 = new CounterPlugin({
+//   rootSelector: "#counter2",
+//   initialValue: 0,
+//   stepValue: 1000,
+// });
+// const counter3 = new CounterPlugin({
+//   rootSelector: "#counter3",
+//   initialValue: 0,
+//   stepValue: 100,
+// });
+
+// * SquareEnix-bot
+
+//1. Создать маркированный список.
+//Создать кнопки "Add" "Remove", которые будут менять состав списка
+//Создать input с которого будем получать значение, которое будет в li
+// Четным li указать красный фон, нечетным -- синим
+//Для выполнения задания используйте createElement
+
+const ol = document.createElement('ol');
+
+const addBtn = document.createElement('button');
+addBtn.textContent = 'Add';
+const removeBtn = document.createElement('button');
+removeBtn.textContent = 'Remove';
+const input = document.createElement('input');
+
+document.body.append(ol, input, addBtn, removeBtn);
+
+function createLi() {
+    const li = document.createElement('li');
+    li.textContent = input.value ? input.value : "null";
+    ol.append(li);     
+    const isEven = ol.children.length % 2 === 0;    
+    li.style.backgroundColor = isEven ? 'red' : 'blue';
+    input.value = '';
 }
 
-const counter = new CounterPlugin({
-  rootSelector: "#counter",
-  initialValue: 0,
-  stepValue: 10,
-});
-const counter2 = new CounterPlugin({
-  rootSelector: "#counter2",
-  initialValue: 0,
-  stepValue: 1000,
-});
-const counter3 = new CounterPlugin({
-  rootSelector: "#counter3",
-  initialValue: 0,
-  stepValue: 100,
-});
+function removeLi() {
+    if (ol.children.length === 0) return;
+    ol.lastElementChild.remove();
+}
 
+addBtn.addEventListener('click', createLi);
+removeBtn.addEventListener('click', removeLi);
