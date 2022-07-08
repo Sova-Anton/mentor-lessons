@@ -380,7 +380,7 @@ console.log(`${modifyHours}:${modifyMinutes}`);*/
 // Четным li указать красный фон, нечетным -- синим
 //Для выполнения задания используйте createElement
 
-const ol = document.createElement('ol');
+/*const ol = document.createElement('ol');
 
 const addBtn = document.createElement('button');
 addBtn.textContent = 'Add';
@@ -405,4 +405,54 @@ function removeLi() {
 }
 
 addBtn.addEventListener('click', createLi);
-removeBtn.addEventListener('click', removeLi);
+removeBtn.addEventListener('click', removeLi);*/
+
+
+//Создать небольшую игру:)
+// - Изначально на экране пользователя будет отображаться
+//какая - то форма (круг, квадрат, прямоулольник)
+// - При нажатии на нее в рандомном порядке форма должна
+//меняться на другую
+// - Форма каждый раз должна появляться в разных местах на странице
+// - Цвет формы в рандомном порядке меняется,
+
+const forms = [
+  'width: 100px; height: 100px; border-width: 1px; border-color: #000000',
+  'width: 100px; height: 100px; border-radius: 50%; border-width: 1px; border-color: #000000',
+  'width: 150px; height: 100px; border-width: 1px; border-color: #000000',
+  'width: 200px; height: 100px; border-radius: 100px / 50px;',
+  'width: 150px; height: 100px; transform: skew(20deg);',
+];
+
+
+const randomither = max => {
+  return Math.floor(Math.random() * max);
+};
+function getRangomColor() {
+  return `#${getRandomHex()}${getRandomHex()}${getRandomHex()}`;
+}
+
+function getRandomHex() {
+  return Math.round(Math.random() * 256)
+    .toString(16)
+    .padStart(2, '0');
+}
+
+
+const element = document.createElement('div');
+
+handleElementClick();
+document.body.append(element);
+
+element.addEventListener('click', handleElementClick)
+
+function handleElementClick() {
+    const randomIndex = randomither(forms.length)
+    element.style.cssText = forms[randomIndex]
+    element.style.position = 'absolute'
+    element.style.top = `${randomither(100)}%`
+    element.style.left = `${randomither(100)}%`
+       
+    element.style.background = getRangomColor();
+
+}
